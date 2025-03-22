@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  transit-calendar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: transit-calendar
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env
+    network_mode: host  # Optional: For Home Assistant integration
