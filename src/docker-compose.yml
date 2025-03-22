@@ -10,5 +10,5 @@ services:
     volumes:
       - ./data:/app/data
     env_file:
-      - .env
+      - stack.env
     network_mode: host  # Optional: For Home Assistant integration
