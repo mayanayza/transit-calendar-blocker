@@ -1,3 +1,4 @@
+import time
 import uuid
 from datetime import datetime, timedelta
 
@@ -221,7 +222,7 @@ class CalendarService:
             )
             
             # Set description with Apple Maps link
-            event.add('description', f"Transit from {transit_event['origin']} to {transit_event['destination']}\n\n{apple_maps_url}")
+            event.add('description', f"{apple_maps_url}")
             
             # Add start and end times
             start_time = parse(transit_event['startTime'])
@@ -262,29 +263,53 @@ class CalendarService:
             # Convert to datetime if needed
             if isinstance(date, str):
                 date = datetime.strptime(date, '%Y-%m-%d')
-                
+                    
             start_of_day = date.replace(hour=0, minute=0, second=0, microsecond=0)
             end_of_day = date.replace(hour=23, minute=59, second=59, microsecond=999999)
             
-            # Find events on the date
+            logger.debug(f"Searching for events to delete between {start_of_day} and {end_of_day}")
+            
+            # Find events on the date with date_search
             events = self.dest_calendar.date_search(
                 start=start_of_day,
                 end=end_of_day,
                 expand=True
             )
             
+            logger.debug(f"Found {len(events)} events to delete")
+            
             # Delete each event
             count = 0
+            delete_errors = 0
             for event in events:
-                event.delete()
-                count += 1
-                
-            logger.info(f"Deleted {count} transit events for date {date.strftime('%Y-%m-%d')}")
+                try:
+                    # Get event summary for logging
+                    try:
+                        vcal = vobject.readOne(event.data)
+                        vevent = vcal.vevent
+                        summary = vevent.summary.value if hasattr(vevent, 'summary') else "No Title"
+                    except:
+                        summary = "Unknown"
+                    
+                    logger.debug(f"Deleting event: {summary}")
+                    
+                    # Delete the event
+                    event.delete()
+                    
+                    # Wait briefly to allow server to process the deletion
+                    time.sleep(0.5)
+                    
+                    count += 1
+                    logger.debug(f"Successfully deleted event: {summary}")
+                except Exception as e:
+                    delete_errors += 1
+                    logger.error(f"Error deleting specific event: {str(e)}")
+                    
+            logger.info(f"Deleted {count} transit events for date {date.strftime('%Y-%m-%d')} (errors: {delete_errors})")
             return count
-            
+                
         except Exception as e:
             logger.error(f"Error deleting transit events: {str(e)}")
             return 0
-
 # Create a singleton instance
 calendar_service = CalendarService()

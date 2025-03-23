@@ -4,13 +4,8 @@ from datetime import datetime, timedelta
 import config
 from loguru import logger
 
+import script.database as db
 from script.calendar_service import calendar_service
-from script.database import (
-    delete_transit_events_for_date,
-    get_events_for_date,
-    save_event,
-    save_transit_event,
-)
 from script.transit_service import are_locations_similar, calculate_transit_time
 
 
@@ -28,8 +23,13 @@ def check_for_calendar_updates():
         # Save events and collect dates to process
         for event in events:
             if event.get("location"):
-                date_str = save_event(event)
-                dates_to_process.add(date_str)
+                date_str, event_changed = db.save_event(event)
+                # Only add to processing if event details have changed
+                if event_changed:
+                    dates_to_process.add(date_str)
+                    logger.info(f"Event '{event.get('title')}' on {date_str} has changed, will process")
+                else:
+                    logger.info(f"Event '{event.get('title')}' on {date_str} unchanged, skipping")
         
         # Process each date
         for date_str in dates_to_process:
@@ -53,12 +53,22 @@ def process_date(date):
     logger.info(f"Processing transit events for date: {date_str}")
     
     try:
-        # Delete existing transit events for the date
-        calendar_service.delete_transit_events_for_date(date_str)
-        delete_transit_events_for_date(date_str)
+        # First delete transit events from the calendar
+        try:
+            num_deleted = calendar_service.delete_transit_events_for_date(date_str)
+            logger.info(f"Deleted {num_deleted} transit events from calendar for date: {date_str}")
+        except Exception as e:
+            logger.error(f"Error deleting transit events from calendar: {str(e)}")
+        
+        # Then delete from our database
+        try:
+            num_deleted_db = db.delete_transit_events_for_date(date_str)
+            logger.info(f"Deleted {num_deleted_db} transit events from database for date: {date_str}")
+        except Exception as e:
+            logger.error(f"Error deleting transit events from database: {str(e)}")
         
         # Get events for the date
-        events = get_events_for_date(date_str)
+        events = db.get_events_for_date(date_str)
         
         # Filter events with locations and sort by start time
         events_with_location = [e for e in events if e.location]
@@ -101,7 +111,7 @@ def process_date(date):
                     }
                     
                     # Save to database and create on calendar
-                    save_transit_event(transit_event)
+                    db.save_transit_event(transit_event)
                     calendar_service.create_transit_event(transit_event)
             
             # Update last location and event name
@@ -136,7 +146,7 @@ def process_date(date):
                         }
                         
                         # Save to database and create on calendar
-                        save_transit_event(transit_event)
+                        db.save_transit_event(transit_event)
                         calendar_service.create_transit_event(transit_event)
         
         logger.info(f"Completed processing transit events for date: {date_str}")

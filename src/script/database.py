@@ -1,8 +1,9 @@
+import hashlib
 from datetime import datetime, timedelta
 
 import config
 from loguru import logger
-from sqlalchemy import Column, DateTime, String, create_engine
+from sqlalchemy import Column, DateTime, String, create_engine, inspect
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
@@ -49,38 +50,79 @@ class TransitEvent(Base):
     def __repr__(self):
         return f"<TransitEvent(id='{self.id}', title='{self.title}', date='{self.date}')>"
 
+class ProcessedEvent(Base):
+    __tablename__ = "processed_events"
+    
+    id = Column(String, primary_key=True)
+    title = Column(String)
+    location = Column(String)
+    date = Column(String)  # YYYY-MM-DD format
+    hash_value = Column(String)  # Hash of relevant fields to detect changes
+    last_processed = Column(DateTime, default=datetime.now)
+    
+    def __repr__(self):
+        return f"<ProcessedEvent(id='{self.id}', title='{self.title}', date='{self.date}')>"
+
 # Create a session factory
 Session = sessionmaker(bind=engine)
 
 def initialize_db():
     """Initialize the database by creating all tables"""
     logger.info("Initializing database")
+    
+    # Check if we need to migrate the database
+    inspector = inspect(engine)
+    existing_tables = inspector.get_table_names()
+    
+    # Create all tables that don't exist
     Base.metadata.create_all(engine)
+    
+    logger.info(f"Database initialized with tables: {', '.join(inspector.get_table_names())}")
 
 def save_event(event_data):
-    """Store an event in the database
+    """Store an event in the database and check if it has changed
     
     Args:
         event_data (dict): Event data including id, title, location, startTime, endTime, calendarId
         
     Returns:
-        str: The date of the event in YYYY-MM-DD format
+        tuple: (date_str, event_changed) where:
+            - date_str (str): The date of the event in YYYY-MM-DD format
+            - event_changed (bool): True if event was updated, False if unchanged
+    """
+    # Parse datetime objects
+    start_time = datetime.fromisoformat(event_data["startTime"].replace("Z", "+00:00"))
+    end_time = datetime.fromisoformat(event_data["endTime"].replace("Z", "+00:00"))
+    
+    # Format date as YYYY-MM-DD
+    date_str = start_time.strftime('%Y-%m-%d')
+    
+    # Step 1: Save the full event data to the Events table
+    update_event_record(event_data, start_time, end_time, date_str)
+    
+    # Step 2: Check if the event has changed since last processing
+    event_changed = check_event_changes(event_data, start_time, date_str)
+    
+    return date_str, event_changed
+
+def update_event_record(event_data, start_time, end_time, date_str):
+    """Update or create a record in the Events table
+    
+    Args:
+        event_data (dict): Event data
+        start_time (datetime): Parsed start time
+        end_time (datetime): Parsed end time
+        date_str (str): Formatted date string
     """
     session = Session()
     
     try:
-        # Parse datetime objects
-        start_time = datetime.fromisoformat(event_data["startTime"].replace("Z", "+00:00"))
-        end_time = datetime.fromisoformat(event_data["endTime"].replace("Z", "+00:00"))
-        
-        # Format date as YYYY-MM-DD
-        date_str = start_time.strftime('%Y-%m-%d')
-        
-        # Check if event exists
+        # Check if event exists in Events table
         existing_event = session.query(Event).filter(Event.id == event_data["id"]).first()
         
         if existing_event:
-            # Update existing event
+            # Update existing event record
+            logger.debug(f"Updating existing event record for {event_data['id']}")
             existing_event.title = event_data["title"]
             existing_event.location = event_data.get("location", "")
             existing_event.start_time = start_time
@@ -88,7 +130,8 @@ def save_event(event_data):
             existing_event.date = date_str
             existing_event.updated_at = datetime.now()
         else:
-            # Create new event
+            # Create new event record
+            logger.debug(f"Creating new event record for {event_data['id']}")
             new_event = Event(
                 id=event_data["id"],
                 title=event_data["title"],
@@ -102,12 +145,74 @@ def save_event(event_data):
             session.add(new_event)
         
         session.commit()
-        return date_str
-        
     except Exception as e:
         session.rollback()
-        logger.error(f"Error saving event: {str(e)}")
+        logger.error(f"Error updating event record: {str(e)}")
         raise
+    finally:
+        session.close()
+
+def check_event_changes(event_data, start_time, date_str):
+    """Check if an event has changed since it was last processed
+    
+    Args:
+        event_data (dict): Event data
+        start_time (datetime): Parsed start time
+        date_str (str): Formatted date string
+    
+    Returns:
+        bool: True if event changed or is new, False if unchanged
+    """
+    session = Session()
+    
+    try:
+        # Create hash value for change detection
+        # We only care about title, location and start_time for transit purposes
+        hash_input = f"{event_data['title']}|{event_data.get('location', '')}|{start_time.isoformat()}"
+        hash_value = hashlib.md5(hash_input.encode()).hexdigest()
+        
+        # Check if we've processed this event before
+        processed_event = session.query(ProcessedEvent).filter(ProcessedEvent.id == event_data["id"]).first()
+        
+        if not processed_event:
+            # This is a new event we haven't seen before
+            logger.debug(f"New event {event_data['id']} being processed for the first time")
+            
+            # Create new processed event record
+            new_processed_event = ProcessedEvent(
+                id=event_data["id"],
+                title=event_data["title"],
+                location=event_data.get("location", ""),
+                date=date_str,
+                hash_value=hash_value,
+                last_processed=datetime.now()
+            )
+            session.add(new_processed_event)
+            session.commit()
+            
+            # New events always need processing
+            return True
+        else:
+            # We've seen this event before, check if it changed
+            if processed_event.hash_value == hash_value:
+                # Hash hasn't changed, event details relevant to transit are unchanged
+                logger.debug(f"Event {event_data['id']} unchanged since last processing")
+                return False
+            else:
+                # Event has changed, update the processed event record
+                logger.debug(f"Event {event_data['id']} changed since last processing")
+                processed_event.title = event_data["title"]
+                processed_event.location = event_data.get("location", "")
+                processed_event.date = date_str
+                processed_event.hash_value = hash_value
+                processed_event.last_processed = datetime.now()
+                session.commit()
+                return True
+    except Exception as e:
+        session.rollback()
+        logger.error(f"Error checking event changes: {str(e)}")
+        # If there's an error, return True to ensure processing happens
+        return True
     finally:
         session.close()
 
@@ -236,6 +341,9 @@ def cleanup_old_data(days=7):
         
         # Delete old transit events
         session.query(TransitEvent).filter(TransitEvent.date < cutoff_date).delete()
+        
+        # We keep ProcessedEvent records longer to avoid reprocessing
+        # when events reappear due to recurrence
         
         session.commit()
         logger.info(f"Cleaned up data older than {cutoff_date}")
