@@ -8,7 +8,11 @@ services:
     container_name: transit-calendar
     restart: unless-stopped
     volumes:
-      - ./data:/app/data
+      - ./data:/app/data:rw  # Explicitly set as read-write
     env_file:
       - stack.env
+    environment:
+      - DB_PATH=/app/data/transit-calendar.sqlite
+      - LOG_FILE=/app/data/transit-calendar.log
     network_mode: host  # Optional: For Home Assistant integration
+    user: "1000:1000"  # This may need adjustment based on your Portainer host

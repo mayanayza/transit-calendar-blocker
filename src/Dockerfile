@@ -10,8 +10,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Create volume for data
-VOLUME /app/data
+# Create volume for data and ensure permissions
+RUN mkdir -p /app/data && chmod 777 /app/data
 
 # Set environment variables
 ENV PYTHONPATH=/app
@@ -20,9 +20,10 @@ ENV LOG_FILE=/app/data/transit-calendar.log
 ENV PYTHONUNBUFFERED=1
 
 # Run as non-root user
-RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
+RUN addgroup --system --gid 1000 appgroup && \
+    adduser --system --uid 1000 --ingroup appgroup appuser
 RUN chown -R appuser:appgroup /app
 USER appuser
 
-# Command to run
+# Command to run with error handling
 CMD ["python", "-m", "script.main"]

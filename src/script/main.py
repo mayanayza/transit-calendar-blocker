@@ -1,3 +1,4 @@
+import os
 import signal
 import sys
 import time
@@ -12,6 +13,17 @@ from script.scheduler import check_for_calendar_updates, process_daily_update
 
 # Global scheduler
 scheduler = None
+
+def setup_logging():
+    """Setup logging to ensure log directory exists"""
+    log_dir = os.path.dirname(config.LOG_FILE)
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # Log system information for debugging
+    logger.info(f"Current working directory: {os.getcwd()}")
+    logger.info(f"Database path: {config.DB_PATH}")
+    logger.info(f"Log file: {config.LOG_FILE}")
+    logger.info(f"Environment variables: DB_PATH={os.environ.get('DB_PATH')}, LOG_FILE={os.environ.get('LOG_FILE')}")
 
 def setup_scheduler():
     """Set up the scheduler with all required jobs"""
@@ -62,8 +74,13 @@ def main():
     logger.info("Starting Transit Calendar application")
     
     try:
-        # Initialize the database
-        initialize_db()
+        # Setup logging with additional info
+        setup_logging()
+        
+        # Initialize the database - exit if it fails
+        if not initialize_db():
+            logger.error("Database initialization failed - exiting")
+            sys.exit(1)
         
         # Initialize calendar service
         calendar_service.initialize()
