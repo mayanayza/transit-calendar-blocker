@@ -2,14 +2,26 @@ import os
 import signal
 import sys
 import time
+import traceback
 
 import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-from script.calendar_service import calendar_service
-from script.database import cleanup_old_data, initialize_db
-from script.scheduler import check_for_calendar_updates, process_daily_update
+# Set up logger first
+logger.add(sys.stderr, level="INFO")
+logger.add(config.LOG_FILE, level=config.LOG_LEVEL, 
+           rotation="10 MB", retention="30 days", enqueue=True)
+
+# Import remaining modules after logger setup
+try:
+    from script.calendar_service import calendar_service
+    from script.database import cleanup_old_data, initialize_db
+    from script.scheduler import check_for_calendar_updates, process_daily_update
+except ImportError as e:
+    logger.error(f"Import error: {str(e)}")
+    logger.error(traceback.format_exc())
+    sys.exit(1)
 
 # Global scheduler
 scheduler = None

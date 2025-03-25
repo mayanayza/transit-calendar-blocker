@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Create volume for data and ensure permissions
+# Create volume directory with full permissions
 RUN mkdir -p /app/data && chmod 777 /app/data
 
 # Set environment variables
@@ -19,11 +19,8 @@ ENV DB_PATH=/app/data/transit-calendar.sqlite
 ENV LOG_FILE=/app/data/transit-calendar.log
 ENV PYTHONUNBUFFERED=1
 
-# Run as non-root user
-RUN addgroup --system --gid 1000 appgroup && \
-    adduser --system --uid 1000 --ingroup appgroup appuser
-RUN chown -R appuser:appgroup /app
-USER appuser
+# Run as root for now (we'll fix permissions issues first)
+# Later we can switch back to a non-root user
 
-# Command to run with error handling
-CMD ["python", "-m", "script.main"]
+# Command to run with intentional delay to ensure filesystem is ready
+CMD ["sh", "-c", "sleep 2 && python -m script.main"]

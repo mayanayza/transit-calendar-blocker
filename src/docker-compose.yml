@@ -7,12 +7,19 @@ services:
       dockerfile: Dockerfile
     container_name: transit-calendar
     restart: unless-stopped
+    # Root user for troubleshooting permissions
+    user: root
     volumes:
-      - ./data:/app/data:rw  # Explicitly set as read-write
+      # Named volume instead of bind mount for better portability
+      - transit_data:/app/data
     env_file:
       - stack.env
     environment:
       - DB_PATH=/app/data/transit-calendar.sqlite
       - LOG_FILE=/app/data/transit-calendar.log
     network_mode: host  # Optional: For Home Assistant integration
-    user: "1000:1000"  # This may need adjustment based on your Portainer host
+
+volumes:
+  transit_data:
+    # External false means Docker manages this volume
+    external: false
