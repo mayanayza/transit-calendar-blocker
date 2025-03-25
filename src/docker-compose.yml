@@ -7,19 +7,41 @@ services:
       dockerfile: Dockerfile
     container_name: transit-calendar
     restart: unless-stopped
-    # Root user for troubleshooting permissions
     user: root
     volumes:
-      # Named volume instead of bind mount for better portability
       - transit_data:/app/data
-    env_file:
-      - stack.env
+    # Remove the env_file line
+    # env_file:
+    #   - stack.env
+    # Use environment section instead
     environment:
+      # Database and log settings
       - DB_PATH=/app/data/transit-calendar.sqlite
       - LOG_FILE=/app/data/transit-calendar.log
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      
+      # Calendar settings
+      - SOURCE_CALENDAR_URL=${SOURCE_CALENDAR_URL}
+      - SOURCE_CALENDAR_USERNAME=${SOURCE_CALENDAR_USERNAME}
+      - SOURCE_CALENDAR_PASSWORD=${SOURCE_CALENDAR_PASSWORD}
+      - DESTINATION_CALENDAR_URL=${DESTINATION_CALENDAR_URL}
+      - DESTINATION_CALENDAR_USERNAME=${DESTINATION_CALENDAR_USERNAME}
+      - DESTINATION_CALENDAR_PASSWORD=${DESTINATION_CALENDAR_PASSWORD}
+      
+      # HERE API settings
+      - HERE_API_KEY=${HERE_API_KEY}
+      
+      # Home location and transit defaults
+      - HOME_ADDRESS=${HOME_ADDRESS}
+      - DEFAULT_TRANSIT_MODE=${DEFAULT_TRANSIT_MODE:-transit}
+      
+      # Time settings
+      - LOOK_FORWARD_DAYS=${LOOK_FORWARD_DAYS:-28}
+      - CALENDAR_CHECK_INTERVAL=${CALENDAR_CHECK_INTERVAL:-15}
+      - DAILY_UPDATE_TIME=${DAILY_UPDATE_TIME:-01:00}
+      - MAX_TRANSIT_TIME_HOURS=${MAX_TRANSIT_TIME_HOURS:-3}
     network_mode: host  # Optional: For Home Assistant integration
 
 volumes:
   transit_data:
-    # External false means Docker manages this volume
     external: false
