@@ -1,0 +1,958 @@
+2025-03-23 18:55:34.170 | INFO     | __main__:main:62 - Starting Transit Calendar application
+2025-03-23 18:55:34.170 | INFO     | script.database:initialize_db:71 - Initializing database
+2025-03-23 18:55:34.172 | INFO     | script.database:initialize_db:80 - Database initialized with tables: 
+2025-03-23 18:55:34.173 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-23 18:55:35.134 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-23 18:55:35.135 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-23 18:55:36.198 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-23 18:55:36.226 | INFO     | __main__:main:80 - Running initial calendar check
+2025-03-23 18:55:36.227 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-23 18:55:36.227 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-23 to 2025-04-20
+2025-03-23 18:55:36.978 | DEBUG    | script.calendar_service:fetch_events:110 - Added event with location: test1 - Nook
+45 Irving Ave, Brooklyn, NY  11237, United States
+2025-03-23 18:55:36.978 | INFO     | script.calendar_service:fetch_events:116 - Parsed 1 events with locations
+2025-03-23 18:55:36.981 | DEBUG    | script.database:update_event_record:134 - Creating new event record for 4B23B60A-B147-4E16-9E3A-CA31E30F0E96
+2025-03-23 18:55:36.984 | DEBUG    | script.database:check_event_changes:179 - New event 4B23B60A-B147-4E16-9E3A-CA31E30F0E96 being processed for the first time
+2025-03-23 18:55:36.985 | INFO     | script.scheduler:check_for_calendar_updates:30 - Event 'test1' on 2025-03-24 has changed, will process
+2025-03-23 18:55:36.985 | INFO     | script.scheduler:process_date:53 - Processing transit events for date: 2025-03-24
+2025-03-23 18:55:36.987 | DEBUG    | script.calendar_service:delete_transit_events_for_date:270 - Searching for events to delete between 2025-03-24 00:00:00 and 2025-03-24 23:59:59.999999
+2025-03-23 18:55:37.551 | DEBUG    | script.calendar_service:delete_transit_events_for_date:279 - Found 0 events to delete
+2025-03-23 18:55:37.551 | INFO     | script.calendar_service:delete_transit_events_for_date:308 - Deleted 0 transit events for date 2025-03-24 (errors: 0)
+2025-03-23 18:55:37.551 | INFO     | script.scheduler:process_date:60 - Deleted 0 transit events from calendar for date: 2025-03-24
+2025-03-23 18:55:37.553 | INFO     | script.scheduler:process_date:67 - Deleted 0 transit events from database for date: 2025-03-24
+2025-03-23 18:55:39.371 | INFO     | script.calendar_service:create_transit_event:243 - Created transit event: Home > test1
+2025-03-23 18:55:40.855 | INFO     | script.calendar_service:create_transit_event:243 - Created transit event: test1 > Home
+2025-03-23 18:55:40.856 | INFO     | script.scheduler:process_date:153 - Completed processing transit events for date: 2025-03-24
+2025-03-23 18:55:40.856 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 1 dates
+2025-03-23 18:56:36.228 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-23 18:56:36.229 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-23 to 2025-04-20
+2025-03-23 18:56:37.021 | DEBUG    | script.calendar_service:fetch_events:110 - Added event with location: test1 - Nook
+45 Irving Ave, Brooklyn, NY  11237, United States
+2025-03-23 18:56:37.027 | DEBUG    | script.calendar_service:fetch_events:110 - Added event with location: test2 - 278 Bleecker Street
+2L
+Brooklyn NY 11237
+United States
+2025-03-23 18:56:37.027 | INFO     | script.calendar_service:fetch_events:116 - Parsed 2 events with locations
+2025-03-23 18:56:37.029 | DEBUG    | script.database:update_event_record:125 - Updating existing event record for 4B23B60A-B147-4E16-9E3A-CA31E30F0E96
+2025-03-23 18:56:37.035 | DEBUG    | script.database:check_event_changes:199 - Event 4B23B60A-B147-4E16-9E3A-CA31E30F0E96 unchanged since last processing
+2025-03-23 18:56:37.035 | INFO     | script.scheduler:check_for_calendar_updates:32 - Event 'test1' on 2025-03-24 unchanged, skipping
+2025-03-23 18:56:37.036 | DEBUG    | script.database:update_event_record:134 - Creating new event record for 550ECA39-5CC4-4951-8369-B8E2B7F14EE8
+2025-03-23 18:56:37.038 | DEBUG    | script.database:check_event_changes:179 - New event 550ECA39-5CC4-4951-8369-B8E2B7F14EE8 being processed for the first time
+2025-03-23 18:56:37.039 | INFO     | script.scheduler:check_for_calendar_updates:30 - Event 'test2' on 2025-03-24 has changed, will process
+2025-03-23 18:56:37.040 | INFO     | script.scheduler:process_date:53 - Processing transit events for date: 2025-03-24
+2025-03-23 18:56:37.040 | DEBUG    | script.calendar_service:delete_transit_events_for_date:270 - Searching for events to delete between 2025-03-24 00:00:00 and 2025-03-24 23:59:59.999999
+2025-03-23 18:56:37.771 | DEBUG    | script.calendar_service:delete_transit_events_for_date:279 - Found 2 events to delete
+2025-03-23 18:56:37.773 | DEBUG    | script.calendar_service:delete_transit_events_for_date:294 - Deleting event: Home > test1
+2025-03-23 18:56:39.867 | DEBUG    | script.calendar_service:delete_transit_events_for_date:303 - Successfully deleted event: Home > test1
+2025-03-23 18:56:39.870 | DEBUG    | script.calendar_service:delete_transit_events_for_date:294 - Deleting event: test1 > Home
+2025-03-23 18:56:41.115 | DEBUG    | script.calendar_service:delete_transit_events_for_date:303 - Successfully deleted event: test1 > Home
+2025-03-23 18:56:41.116 | INFO     | script.calendar_service:delete_transit_events_for_date:308 - Deleted 2 transit events for date 2025-03-24 (errors: 0)
+2025-03-23 18:56:41.116 | INFO     | script.scheduler:process_date:60 - Deleted 2 transit events from calendar for date: 2025-03-24
+2025-03-23 18:56:41.121 | INFO     | script.scheduler:process_date:67 - Deleted 2 transit events from database for date: 2025-03-24
+2025-03-23 18:56:42.580 | INFO     | script.calendar_service:create_transit_event:243 - Created transit event: Home > test1
+2025-03-23 18:56:43.856 | INFO     | script.calendar_service:create_transit_event:243 - Created transit event: test1 > test2
+2025-03-23 18:56:45.163 | INFO     | script.calendar_service:create_transit_event:243 - Created transit event: test2 > Home
+2025-03-23 18:56:45.164 | INFO     | script.scheduler:process_date:153 - Completed processing transit events for date: 2025-03-24
+2025-03-23 18:56:45.164 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 1 dates
+2025-03-23 18:57:01.113 | INFO     | __main__:signal_handler:55 - Shutting down...
+2025-03-23 18:57:01.115 | INFO     | __main__:main:87 - Application shutting down...
+2025-03-24 21:34:38.884 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:34:38.884 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:34:38.897 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:34:38.897 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:34:38.898 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:34:38.898 | INFO     | __main__:setup_logging:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:34:38.898 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:34:38.899 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:34:38.899 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:34:38.900 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:34:38.900 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:34:38.900 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-24 21:34:38.900 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-24 21:34:39.819 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-24 21:34:39.820 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-24 21:34:39.819 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/test@maya.cloud/b9b741c4-55bf-4d11-aa55-718d2eee81a7/
+2025-03-24 21:34:39.820 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-24 21:34:40.989 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-24 21:34:40.989 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/test@maya.cloud/17CC68E4-F2AD-4DEB-BDD1-493844FD8761/
+2025-03-24 21:34:41.015 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:34:41.015 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:34:41.015 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:34:41.015 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:34:41.016 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:34:41.016 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:34:42.175 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:34:42.176 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:34:42.175 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:34:42.176 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:35:41.015 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:35:41.015 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:35:41.018 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:35:41.018 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:35:42.323 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:35:42.325 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:35:42.323 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:35:42.325 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:36:41.018 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:36:41.018 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:36:41.021 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:36:41.021 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:36:42.289 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:36:42.291 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:36:42.289 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:36:42.291 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:37:41.014 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:37:41.016 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:37:41.014 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:37:41.016 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:37:42.433 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:37:42.433 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:37:42.435 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:37:42.435 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:38:09.469 | INFO     | __main__:signal_handler:79 - Shutting down...
+2025-03-24 21:38:09.469 | INFO     | __main__:signal_handler:79 - Shutting down...
+2025-03-24 21:38:09.472 | INFO     | __main__:main:116 - Application shutting down...
+2025-03-24 21:38:09.472 | INFO     | __main__:main:116 - Application shutting down...
+2025-03-24 21:38:51.979 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:38:51.979 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:38:51.988 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:38:51.988 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:38:51.989 | INFO     | __main__:setup_logging:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:38:51.989 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:38:51.989 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:38:51.990 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:38:51.990 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:38:51.990 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:38:51.991 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:38:51.990 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:38:51.991 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:38:52.934 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:38:52.934 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:38:52.935 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:38:52.935 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:38:53.857 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:38:53.857 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:38:53.882 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:38:53.882 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:38:53.882 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:38:53.882 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:38:53.883 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:38:53.883 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:38:54.684 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-24 21:38:54.686 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:38:54.684 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-24 21:38:54.686 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:39:53.884 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:39:53.887 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:39:53.884 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:39:53.887 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:39:54.840 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-24 21:39:54.841 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:39:54.840 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-24 21:39:54.841 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:40:43.197 | INFO     | __main__:signal_handler:79 - Shutting down...
+2025-03-24 21:40:43.197 | INFO     | __main__:signal_handler:79 - Shutting down...
+2025-03-24 21:40:43.203 | INFO     | __main__:main:116 - Application shutting down...
+2025-03-24 21:40:43.203 | INFO     | __main__:main:116 - Application shutting down...
+2025-03-24 21:42:39.772 | INFO     | script.logging:setup_logging:37 - Logging initialized: level=DEBUG, file=./data/transit-calendar.log
+2025-03-24 21:42:39.911 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:42:39.919 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:42:39.919 | INFO     | __main__:setup_logging_directories:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:42:39.919 | INFO     | __main__:setup_logging_directories:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:42:39.919 | INFO     | __main__:setup_logging_directories:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:42:39.920 | INFO     | __main__:setup_logging_directories:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:42:39.920 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:42:39.920 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:42:39.921 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:42:39.921 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:42:40.811 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:42:40.811 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:42:41.678 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:42:41.710 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:42:41.710 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:42:41.710 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:42:42.285 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-24 21:42:42.309 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:43:41.711 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:43:41.714 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:43:43.149 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:43:43.149 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:44:41.709 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:44:41.711 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:44:43.047 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:44:43.048 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:45:41.711 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:45:41.712 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:45:43.101 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:45:43.102 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:46:21.069 | INFO     | __main__:signal_handler:79 - Shutting down...
+2025-03-24 21:46:21.070 | INFO     | __main__:main:116 - Application shutting down...
+2025-03-24 21:46:43.929 | INFO     | script.logging:setup_logging:37 - Logging initialized: level=DEBUG, file=./data/transit-calendar.log
+2025-03-24 21:46:44.057 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:46:44.065 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-24 21:46:44.065 | INFO     | __main__:setup_logging_directories:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-24 21:46:44.065 | INFO     | __main__:setup_logging_directories:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-24 21:46:44.065 | INFO     | __main__:setup_logging_directories:37 - Log file: ./data/transit-calendar.log
+2025-03-24 21:46:44.065 | INFO     | __main__:setup_logging_directories:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-24 21:46:44.065 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-24 21:46:44.065 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-24 21:46:44.066 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-24 21:46:44.066 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:46:45.905 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-24 21:46:45.906 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:46:46.799 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-24 21:46:46.831 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-24 21:46:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:46:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:46:48.734 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:46:48.734 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:47:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:47:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:47:48.898 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:47:48.899 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:48:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:48:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:48:48.128 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:48:48.129 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:49:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:49:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:49:48.166 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:49:48.168 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:50:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:50:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:50:48.315 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:50:48.316 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:51:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:51:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:51:48.174 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:51:48.175 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:52:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:52:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:52:48.155 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:52:48.156 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:53:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:53:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:53:49.301 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:53:49.302 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:54:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:54:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:54:48.178 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:54:48.179 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:55:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:55:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:55:48.166 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:55:48.167 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:56:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:56:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:56:48.249 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:56:48.250 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:57:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:57:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:57:48.201 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:57:48.202 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:58:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:58:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:58:48.259 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:58:48.260 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 21:59:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 21:59:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 21:59:48.426 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 21:59:48.427 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:03:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:03:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:03:46.901 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-03-24 22:03:46.902 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:04:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:04:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:04:48.157 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:04:48.158 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:05:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:05:46.828 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:05:48.247 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:05:48.248 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:06:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:06:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:06:48.324 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:06:48.325 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:07:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:07:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:07:48.206 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:07:48.207 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:08:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:08:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:08:48.264 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:08:48.264 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:09:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:09:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:09:48.288 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:09:48.289 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:10:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:10:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:10:48.145 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:10:48.147 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:11:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:11:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:11:48.124 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:11:48.125 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:12:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:12:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:12:48.368 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:12:48.369 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:13:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:13:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:13:48.259 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:13:48.261 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:14:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:14:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:14:48.434 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:14:48.436 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:15:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:15:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:15:48.187 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:15:48.188 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:16:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:16:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:16:48.169 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:16:48.170 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:17:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:17:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:17:48.922 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:17:48.923 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:18:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:18:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:18:48.222 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:18:48.224 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:19:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:19:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:19:48.296 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:19:48.296 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:20:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:20:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:20:48.202 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:20:48.203 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:21:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:21:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:21:48.172 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:21:48.173 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:22:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:22:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:22:48.390 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:22:48.391 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:23:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:23:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:23:48.318 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:23:48.319 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:24:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:24:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:24:48.472 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:24:48.473 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:25:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:25:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:25:48.197 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:25:48.198 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:26:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:26:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:26:48.116 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:26:48.117 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:27:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:27:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:27:48.142 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:27:48.143 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:28:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:28:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:28:48.267 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:28:48.267 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:29:46.874 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:29:46.874 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:29:48.214 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:29:48.215 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:30:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:30:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:30:48.323 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:30:48.325 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:31:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:31:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:31:48.237 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:31:48.238 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:32:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:32:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:32:48.310 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:32:48.311 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:33:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:33:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:33:48.171 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:33:48.172 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:34:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:34:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:34:48.131 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:34:48.131 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:35:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:35:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:35:48.283 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:35:48.284 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:36:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:36:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:36:48.171 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:36:48.171 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:37:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:37:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:37:48.124 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:37:48.124 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:38:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:38:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:38:48.134 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:38:48.135 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:39:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:39:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:39:48.276 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:39:48.276 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:40:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:40:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:40:48.370 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:40:48.371 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:41:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:41:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:41:48.375 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:41:48.375 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:42:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:42:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:42:48.129 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:42:48.130 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:43:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:43:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:43:48.187 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:43:48.187 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:44:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:44:46.840 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:44:48.143 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:44:48.144 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:45:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:45:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:45:48.326 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:45:48.327 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:46:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:46:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:46:48.177 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:46:48.179 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:47:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:47:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:47:48.271 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:47:48.272 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:48:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:48:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:48:48.121 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:48:48.122 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:49:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:49:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:49:48.170 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:49:48.171 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:50:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:50:46.840 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:50:48.151 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:50:48.152 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:51:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:51:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:51:48.107 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:51:48.108 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:52:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:52:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:52:48.392 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:52:48.393 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:53:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:53:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:53:48.174 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:53:48.175 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:54:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:54:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:54:48.115 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:54:48.116 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:55:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:55:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:55:48.135 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:55:48.136 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:56:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:56:46.840 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:56:48.454 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:56:48.454 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:57:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:57:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:57:48.131 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:57:48.132 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:58:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:58:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:58:48.160 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:58:48.162 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 22:59:46.827 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 22:59:46.828 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 22:59:48.371 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 22:59:48.372 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:00:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:00:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:00:54.347 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:00:54.348 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:01:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:01:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:01:48.184 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:01:48.185 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:02:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:02:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:02:48.289 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:02:48.290 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:03:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:03:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:03:51.895 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:03:51.896 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:04:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:04:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:04:48.280 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:04:48.280 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:05:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:05:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:05:48.333 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:05:48.333 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:06:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:06:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:06:48.499 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:06:48.500 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:07:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:07:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:07:48.561 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:07:48.562 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:08:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:08:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:08:48.394 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:08:48.395 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:09:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:09:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:09:48.171 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:09:48.171 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:10:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:10:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:10:48.339 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:10:48.340 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:11:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:11:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:11:48.259 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:11:48.260 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:12:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:12:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:12:48.646 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:12:48.647 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:13:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:13:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:13:48.675 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:13:48.675 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:14:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:14:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:14:48.321 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:14:48.321 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:15:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:15:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:15:48.344 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:15:48.345 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:16:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:16:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:16:48.140 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:16:48.140 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:17:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:17:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:17:48.334 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:17:48.335 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:18:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:18:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:18:48.150 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:18:48.152 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:19:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:19:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:19:48.470 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:19:48.470 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:20:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:20:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:20:48.128 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:20:48.128 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:21:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:21:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:21:48.176 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:21:48.177 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:22:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:22:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:22:48.320 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:22:48.321 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:23:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:23:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:23:48.126 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:23:48.126 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:24:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:24:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:24:48.288 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:24:48.289 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:25:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:25:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:25:48.421 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:25:48.422 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:26:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:26:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:26:48.408 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:26:48.409 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:27:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:27:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:27:48.549 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:27:48.550 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:28:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:28:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:28:48.517 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:28:48.517 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:29:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:29:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:29:48.314 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:29:48.315 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:30:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:30:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:30:48.124 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:30:48.125 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:31:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:31:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:31:48.142 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:31:48.143 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:32:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:32:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:32:48.130 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:32:48.131 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:33:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:33:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:33:48.147 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:33:48.147 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:34:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:34:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:34:48.157 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:34:48.158 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:35:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:35:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:35:48.546 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:35:48.547 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:36:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:36:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:36:48.133 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:36:48.134 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:37:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:37:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:37:48.201 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:37:48.201 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:38:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:38:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:38:48.174 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:38:48.175 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:39:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:39:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:39:48.119 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:39:48.120 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-24 23:40:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-24 23:40:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-24 to 2025-04-21
+2025-03-24 23:40:48.267 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)
+2025-03-24 23:40:48.267 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 00:59:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 00:59:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 00:59:47.567 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 00:59:47.567 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 01:00:00.001 | INFO     | script.scheduler:process_daily_update:158 - Running daily update
+2025-03-25 01:00:00.004 | INFO     | script.scheduler:process_date:53 - Processing transit events for date: 2025-04-22
+2025-03-25 01:00:00.017 | DEBUG    | script.calendar_service:delete_transit_events_for_date:270 - Searching for events to delete between 2025-04-22 00:00:00 and 2025-04-22 23:59:59.999999
+2025-03-25 01:00:00.732 | DEBUG    | script.calendar_service:delete_transit_events_for_date:279 - Found 0 events to delete
+2025-03-25 01:00:00.732 | INFO     | script.calendar_service:delete_transit_events_for_date:308 - Deleted 0 transit events for date 2025-04-22 (errors: 0)
+2025-03-25 01:00:00.733 | INFO     | script.scheduler:process_date:59 - Deleted 0 transit events from calendar for date: 2025-04-22
+2025-03-25 01:00:00.753 | INFO     | script.scheduler:process_date:66 - Deleted 0 transit events from database for date: 2025-04-22
+2025-03-25 01:00:00.758 | INFO     | script.scheduler:process_date:78 - No events with locations found for date: 2025-04-22
+2025-03-25 01:00:00.758 | INFO     | script.scheduler:process_daily_update:169 - Daily update complete for target date: 2025-04-22
+2025-03-25 02:16:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 02:16:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 02:16:48.226 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 02:16:48.226 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 02:17:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 02:17:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 02:17:47.568 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 02:17:47.568 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 04:35:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 04:35:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 04:35:47.568 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 04:35:47.569 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 04:36:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 04:36:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 04:36:51.675 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 04:36:51.675 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 04:37:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 04:37:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 04:37:59.631 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 04:37:59.632 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 05:42:47.260 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 05:42:47.261 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 05:42:47.466 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-03-25 05:42:47.467 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 06:16:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 06:16:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 06:16:47.586 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 06:16:47.587 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 07:20:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 07:20:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 07:20:47.555 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 07:20:47.555 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 08:33:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 08:33:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 08:33:47.601 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 08:33:47.602 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 08:34:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 08:34:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 08:34:47.669 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 08:34:47.670 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 09:50:46.839 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 09:50:46.841 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 09:50:47.886 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 09:50:47.887 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 09:51:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 09:51:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 09:51:47.586 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 09:51:47.587 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:33:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:33:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:33:46.916 | ERROR    | script.calendar_service:fetch_events:120 - Error fetching events: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+2025-03-25 11:33:46.917 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:34:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:34:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:34:47.722 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:34:47.723 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:35:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:35:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:35:47.775 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:35:47.776 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:36:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:36:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:36:47.669 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:36:47.670 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:37:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:37:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:37:47.723 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:37:47.724 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:38:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:38:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:38:47.570 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:38:47.570 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:39:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:39:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:39:47.739 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:39:47.740 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:40:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:40:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:40:47.756 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:40:47.756 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:41:46.828 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:41:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:41:47.650 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:41:47.652 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:42:46.827 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:42:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:42:47.589 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:42:47.590 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:43:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:43:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:43:47.971 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:43:47.972 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:44:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:44:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:44:47.720 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:44:47.722 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:45:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:45:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:45:47.782 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:45:47.783 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:46:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:46:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:46:47.912 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:46:47.913 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:47:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:47:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:47:47.577 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:47:47.578 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:48:46.859 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:48:46.860 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:48:48.321 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:48:48.323 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:49:46.860 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:49:46.861 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:49:47.647 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:49:47.648 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:50:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:50:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:50:47.563 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:50:47.564 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:51:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:51:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:51:47.659 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:51:47.660 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:52:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:52:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:52:47.847 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:52:47.848 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:53:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:53:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:53:47.648 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:53:47.648 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:54:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:54:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:54:47.891 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:54:47.892 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:55:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:55:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:55:47.569 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:55:47.570 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:56:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:56:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:56:47.939 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:56:47.940 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:57:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:57:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:57:47.709 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:57:47.710 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:58:46.836 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:58:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:58:47.649 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:58:47.650 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 11:59:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 11:59:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 11:59:47.621 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 11:59:47.621 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:00:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:00:46.836 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:00:47.605 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:00:47.606 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:01:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:01:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:01:47.636 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:01:47.637 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:02:46.838 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:02:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:02:47.726 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:02:47.727 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:03:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:03:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:03:47.856 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:03:47.857 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:04:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:04:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:04:50.396 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:04:50.397 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:05:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:05:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:05:47.612 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:05:47.613 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:06:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:06:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:06:47.845 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:06:47.845 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:07:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:07:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:07:47.658 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:07:47.659 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:08:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:08:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:08:47.568 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:08:47.569 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:09:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:09:46.835 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:09:47.675 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:09:47.676 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:10:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:10:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:10:47.614 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:10:47.614 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:11:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:11:46.839 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:11:47.754 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:11:47.755 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:12:46.834 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:12:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:12:47.624 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:12:47.625 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:13:46.835 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:13:46.837 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:13:47.797 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:13:47.798 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:14:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:14:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:14:47.803 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:14:47.804 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:15:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:15:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:15:47.623 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:15:47.624 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:16:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:16:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:16:47.838 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:16:47.839 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:17:46.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:17:46.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:17:47.742 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:17:47.742 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:18:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:18:46.834 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:18:47.687 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:18:47.688 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:19:46.837 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:19:46.838 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:19:48.223 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:19:48.223 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:20:46.827 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:20:46.829 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:20:48.079 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:20:48.079 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:21:46.831 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:21:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:21:49.158 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:21:49.159 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:22:46.830 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:22:46.831 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:22:48.236 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:22:48.237 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:23:46.829 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:23:46.830 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:23:47.657 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:23:47.658 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:24:46.832 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:24:46.832 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:24:47.953 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:24:47.953 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-25 12:25:46.827 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-25 12:25:46.828 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-25 to 2025-04-22
+2025-03-25 12:25:47.652 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-25 12:25:47.652 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
+2025-03-26 18:06:27.618 | INFO     | script.logging:setup_logging:37 - Logging initialized: level=DEBUG, file=./data/transit-calendar.log
+2025-03-26 18:06:27.799 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-26 18:06:27.828 | INFO     | __main__:main:86 - Starting Transit Calendar application
+2025-03-26 18:06:27.828 | INFO     | __main__:setup_logging_directories:35 - Current working directory: /Users/mayaferrandiz/Documents/projects/transit-calendar-blocker/src
+2025-03-26 18:06:27.828 | INFO     | __main__:setup_logging_directories:36 - Database path: ./data/transit-calendar.sqlite
+2025-03-26 18:06:27.828 | INFO     | __main__:setup_logging_directories:37 - Log file: ./data/transit-calendar.log
+2025-03-26 18:06:27.828 | INFO     | __main__:setup_logging_directories:38 - Environment variables: DB_PATH=./data/transit-calendar.sqlite, LOG_FILE=./data/transit-calendar.log
+2025-03-26 18:06:27.828 | INFO     | script.database:initialize_db:106 - Initializing database
+2025-03-26 18:06:27.828 | INFO     | script.database:ensure_db_directory:31 - Successfully verified write access to ./data
+2025-03-26 18:06:27.829 | INFO     | script.database:initialize_db:121 - Database initialized with tables: events, processed_events, transit_events
+2025-03-26 18:06:27.829 | INFO     | script.calendar_service:_connect_source_calendar:31 - Connecting to source calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-26 18:06:28.698 | INFO     | script.calendar_service:_connect_source_calendar:48 - Connected to source calendar: {'{DAV:}displayname': 'Events'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/72740597-521a-4468-84b8-7549376a5f41/
+2025-03-26 18:06:28.699 | INFO     | script.calendar_service:_connect_destination_calendar:57 - Connecting to destination calendar: https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-26 18:06:29.800 | INFO     | script.calendar_service:_connect_destination_calendar:74 - Connected to destination calendar: {'{DAV:}displayname': 'Transit'}, https://caldav.forwardemail.net/dav/maya@maya.cloud/E869DED9-BC9C-43C3-A79C-0E3D5C1516EE/
+2025-03-26 18:06:29.833 | INFO     | __main__:main:109 - Running initial calendar check
+2025-03-26 18:06:29.833 | INFO     | script.scheduler:check_for_calendar_updates:14 - Checking for calendar updates
+2025-03-26 18:06:29.833 | INFO     | script.calendar_service:fetch_events:94 - Fetching events from 2025-03-26 to 2025-04-23
+2025-03-26 18:06:30.456 | INFO     | script.calendar_service:fetch_events:116 - Parsed 0 events with locations
+2025-03-26 18:06:30.457 | INFO     | script.scheduler:check_for_calendar_updates:38 - Calendar update check complete, processed 0 dates
