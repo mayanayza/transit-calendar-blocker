@@ -8,12 +8,12 @@ import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-# Set up logger first
-logger.add(sys.stderr, level="INFO")
-logger.add(config.LOG_FILE, level=config.LOG_LEVEL, 
-           rotation="10 MB", retention="30 days", enqueue=True)
+# Import and setup logging FIRST, before any other imports
+from script.logging import setup_logging
 
-# Import remaining modules after logger setup
+setup_logging(config.LOG_FILE, config.LOG_LEVEL)
+
+# Now import the rest of the modules
 try:
     from script.calendar_service import calendar_service
     from script.database import cleanup_old_data, initialize_db
@@ -26,7 +26,7 @@ except ImportError as e:
 # Global scheduler
 scheduler = None
 
-def setup_logging():
+def setup_logging_directories():
     """Setup logging to ensure log directory exists"""
     log_dir = os.path.dirname(config.LOG_FILE)
     os.makedirs(log_dir, exist_ok=True)
@@ -86,8 +86,8 @@ def main():
     logger.info("Starting Transit Calendar application")
     
     try:
-        # Setup logging with additional info
-        setup_logging()
+        # Setup logging directories
+        setup_logging_directories()
         
         # Initialize the database - exit if it fails
         if not initialize_db():
