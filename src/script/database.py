@@ -113,7 +113,6 @@ def initialize_db():
     try:
         # Check if we need to migrate the database
         inspector = inspect(engine)
-        existing_tables = inspector.get_table_names()
         
         # Create all tables that don't exist
         Base.metadata.create_all(engine)

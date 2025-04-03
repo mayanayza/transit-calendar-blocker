@@ -28,6 +28,13 @@ services:
       - DESTINATION_CALENDAR_USERNAME=${DESTINATION_CALENDAR_USERNAME}
       - DESTINATION_CALENDAR_PASSWORD=${DESTINATION_CALENDAR_PASSWORD}
       
+      # OpenObserve settings
+      - OBSERVE_URL=${OBSERVE_URL}
+      - OBSERVE_ORG=${OBSERVE_ORG}
+      - OBSERVE_STREAM=${OBSERVE_STREAM}
+      - OBSERVE_USERNAME=${OBSERVE_USERNAME}
+      - OBSERVE_PASSWORD=${OBSERVE_PASSWORD}
+
       # HERE API settings
       - HERE_API_KEY=${HERE_API_KEY}
       
@@ -40,7 +47,6 @@ services:
       - CALENDAR_CHECK_INTERVAL=${CALENDAR_CHECK_INTERVAL:-15}
       - DAILY_UPDATE_TIME=${DAILY_UPDATE_TIME:-01:00}
       - MAX_TRANSIT_TIME_HOURS=${MAX_TRANSIT_TIME_HOURS:-3}
-    network_mode: host  # Optional: For Home Assistant integration
 
 volumes:
   transit_data:

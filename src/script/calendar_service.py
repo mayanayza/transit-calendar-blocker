@@ -105,7 +105,9 @@ class CalendarService:
                 try:
                     event_data = self._parse_event(event)
                     if event_data:
-                        if event_data.get("location"):
+                        if "notes" in event_data and "No location needed" in event_data["notes"]:
+                            logger.debug(f"Skipping event: {event_data['title']} due to No location needed in notes")
+                        elif event_data.get("location"):
                             parsed_events.append(event_data)
                             logger.debug(f"Added event with location: {event_data['title']} - {event_data['location']}")
                         else:
@@ -280,7 +282,6 @@ class CalendarService:
             
             # Delete each event
             count = 0
-            delete_errors = 0
             for event in events:
                 try:
                     # Get event summary for logging
@@ -288,7 +289,8 @@ class CalendarService:
                         vcal = vobject.readOne(event.data)
                         vevent = vcal.vevent
                         summary = vevent.summary.value if hasattr(vevent, 'summary') else "No Title"
-                    except:
+                    except Exception as e:
+                        logger.error(f"Error getting event summary: {str(e)}")
                         summary = "Unknown"
                     
                     logger.debug(f"Deleting event: {summary}")
@@ -302,10 +304,9 @@ class CalendarService:
                     count += 1
                     logger.debug(f"Successfully deleted event: {summary}")
                 except Exception as e:
-                    delete_errors += 1
                     logger.error(f"Error deleting specific event: {str(e)}")
                     
-            logger.info(f"Deleted {count} transit events for date {date.strftime('%Y-%m-%d')} (errors: {delete_errors})")
+            logger.info(f"Deleted {count} transit events for date {date.strftime('%Y-%m-%d')}")
             return count
                 
         except Exception as e:
