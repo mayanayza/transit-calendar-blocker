@@ -8,19 +8,9 @@ import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-# Import and setup logging FIRST, before any other imports
-from script.logging import setup_logging, setup_openobserve_logging
+from script.logging import setup_logging
 
 setup_logging(config.LOG_FILE, config.LOG_LEVEL)
-
-setup_openobserve_logging(
-    log_level="INFO",
-    url=config.OBSERVE_URL,
-    organization=config.OBSERVE_ORG, 
-    stream=config.OBSERVE_STREAM,
-    username=config.OBSERVE_USERNAME,
-    password=config.OBSERVE_PASSWORD
-)
 
 try:
     from script.calendar_service import calendar_service
