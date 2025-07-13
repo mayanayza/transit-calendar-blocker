@@ -40,7 +40,7 @@ DAILY_UPDATE_HOUR, DAILY_UPDATE_MINUTE = map(int, DAILY_UPDATE_TIME.split(':'))
 MAX_TRANSIT_TIME_HOURS = int(os.getenv('MAX_TRANSIT_TIME_HOURS', '3'))
 
 # Database
-DB_PATH = os.getenv('DB_PATH', './data/transit-calendar.sqlite')
+DB_PATH = os.getenv('DB_PATH', '../data/transit-calendar.sqlite')
 
 # Ensure database directory exists
 DB_DIR = os.path.dirname(DB_PATH)
