@@ -108,9 +108,7 @@ class CalendarService:
                 try:
                     event_data = self._parse_event(event)
                     if event_data:
-                        if "notes" in event_data and "No location needed" in event_data["notes"]:
-                            logger.debug(f"Skipping event: {event_data['title']} due to No location needed in notes")
-                        elif event_data.get("location"):
+                        if event_data.get("location"):
                             parsed_events.append(event_data)
                             logger.debug(f"Added event with location: {event_data['title']} - {event_data['location']}")
                         else:
