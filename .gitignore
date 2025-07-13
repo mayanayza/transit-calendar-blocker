@@ -1,9 +1,7 @@
-media-internal/
-content/
-script/.env
-src/.env
-script/.venv/
-**/__init__.py
-**/__pycache__
+.env
+.venv
+.idea
+.data/
+__init__.py
+__pycache__
 .DS_Store
-src/data/*
