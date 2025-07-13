@@ -4,9 +4,9 @@ from datetime import datetime, timedelta
 import config
 from loguru import logger
 
-import script.database as db
-from script.calendar_service import calendar_service
-from script.transit_service import are_locations_similar, calculate_transit_time
+import database as db
+from calendar_service import calendar_service
+from transit_service import are_locations_similar, calculate_transit_time
 
 
 def check_for_calendar_updates():
@@ -72,7 +72,7 @@ def process_date(date):
         
         # Filter events with locations and sort by start time
         events_with_location = [e for e in events if e.location]
-        events_with_location.sort(key=lambda e: e.start_time)
+        events_with_location.sort(key=lambda ev: ev.start_time)
         
         if not events_with_location:
             logger.info(f"No events with locations found for date: {date_str}")

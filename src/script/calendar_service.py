@@ -9,8 +9,9 @@ import vobject
 from dateutil.parser import parse
 from icalendar import Calendar, Event
 from loguru import logger
+from .transit_service import get_apple_maps_url
 
-from script.transit_service import get_apple_maps_url
+from .utils import safe_date_search
 
 
 class CalendarService:
@@ -44,7 +45,7 @@ class CalendarService:
             )
             
             # Verify the calendar exists by trying to get a property
-            name = self.source_calendar.get_properties([caldav.elements.dav.DisplayName()])
+            name = self.source_calendar.get_properties([caldav.dav.DisplayName()])
             logger.info(f"Connected to source calendar: {name}, {config.SOURCE_CALENDAR_URL}")
             
         except Exception as e:
@@ -70,7 +71,7 @@ class CalendarService:
             )
             
             # Verify the calendar exists by trying to get a property
-            name = self.dest_calendar.get_properties([caldav.elements.dav.DisplayName()])
+            name = self.dest_calendar.get_properties([caldav.dav.DisplayName()])
             logger.info(f"Connected to destination calendar: {name}, {config.DESTINATION_CALENDAR_URL}")
             
         except Exception as e:
@@ -93,12 +94,14 @@ class CalendarService:
         try:
             logger.info(f"Fetching events from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
                         
-            events = self.source_calendar.date_search(
-                start=start_date,
-                end=end_date,
+            # FIXED: Use safe_date_search instead of date_search
+            events = safe_date_search(
+                self.source_calendar,
+                start_date,
+                end_date,
                 expand=True
             )
-            
+                
             # Parse events to our internal format
             parsed_events = []
             for event in events:
@@ -175,9 +178,9 @@ class CalendarService:
             
             # Ensure timezone awareness
             if start_time.tzinfo is None:
-                start_time = pytz.UTC.localize(start_time)
+                start_time = pytz.utc.localize(start_time)
             if end_time.tzinfo is None:
-                end_time = pytz.UTC.localize(end_time)
+                end_time = pytz.utc.localize(end_time)
                 
             # Create event data
             event_data = {
@@ -271,10 +274,10 @@ class CalendarService:
             
             logger.debug(f"Searching for events to delete between {start_of_day} and {end_of_day}")
             
-            # Find events on the date with date_search
-            events = self.dest_calendar.date_search(
-                start=start_of_day,
-                end=end_of_day,
+            events = safe_date_search(
+                self.dest_calendar,
+                start_of_day,
+                end_of_day,
                 expand=True
             )
             
@@ -312,5 +315,6 @@ class CalendarService:
         except Exception as e:
             logger.error(f"Error deleting transit events: {str(e)}")
             return 0
+
 # Create a singleton instance
 calendar_service = CalendarService()

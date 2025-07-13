@@ -2,27 +2,18 @@ import os
 import signal
 import sys
 import time
-import traceback
+from typing import Optional
 
 import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-from script.logging import setup_logging
-
-setup_logging(config.LOG_FILE, config.LOG_LEVEL)
-
-try:
-    from script.calendar_service import calendar_service
-    from script.database import cleanup_old_data, initialize_db
-    from script.scheduler import check_for_calendar_updates, process_daily_update
-except ImportError as e:
-    logger.error(f"Import error: {str(e)}")
-    logger.error(traceback.format_exc())
-    sys.exit(1)
+from .calendar_service import calendar_service
+from .database import cleanup_old_data, initialize_db
+from .scheduler import check_for_calendar_updates, process_daily_update
 
 # Global scheduler
-scheduler = None
+scheduler: Optional[BackgroundScheduler] = None
 
 def setup_logging_directories():
     """Setup logging to ensure log directory exists"""
@@ -74,6 +65,7 @@ def setup_scheduler():
 
 def signal_handler(sig, frame):
     """Handle shutdown signals"""
+    global scheduler
     logger.info("Shutting down...")
     if scheduler:
         scheduler.shutdown()
@@ -81,6 +73,7 @@ def signal_handler(sig, frame):
 
 def main():
     """Main entry point for the application"""
+    global scheduler
     logger.info("Starting Transit Calendar application")
     
     try:
@@ -94,13 +87,15 @@ def main():
         
         # Initialize calendar service
         calendar_service.initialize()
+
+        # Set up the scheduler
+        scheduler = setup_scheduler()
         
-        # Setup signal handlers for graceful shutdown
+        # Set up signal handlers for graceful shutdown
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
         
-        # Setup and start the scheduler
-        scheduler = setup_scheduler()
+        # Start the scheduler
         scheduler.start()
         
         # Run initial check

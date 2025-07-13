@@ -1,7 +1,9 @@
 import hashlib
 import os
+from contextlib import contextmanager
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing_extensions import Buffer, cast
 
 import config
 from loguru import logger
@@ -19,7 +21,7 @@ def ensure_db_directory():
         # Create directory with parents if it doesn't exist
         Path(db_dir).mkdir(parents=True, exist_ok=True)
         
-        # Set permissions to ensure it's writable
+        # Set permissions to ensure it is writable
         # In Docker this might be redundant but helps with debugging
         os.chmod(db_dir, 0o755)
         
@@ -196,6 +198,14 @@ def update_event_record(event_data, start_time, end_time, date_str):
     finally:
         session.close()
 
+@contextmanager
+def get_session():
+    session = Session()
+    try:
+        yield session
+    finally:
+        session.close()
+
 def check_event_changes(event_data, start_time, date_str):
     """Check if an event has changed since it was last processed
     
@@ -207,58 +217,56 @@ def check_event_changes(event_data, start_time, date_str):
     Returns:
         bool: True if event changed or is new, False if unchanged
     """
-    session = Session()
-    
-    try:
-        # Create hash value for change detection
-        # We only care about title, location and start_time for transit purposes
-        hash_input = f"{event_data['title']}|{event_data.get('location', '')}|{start_time.isoformat()}"
-        hash_value = hashlib.md5(hash_input.encode()).hexdigest()
-        
-        # Check if we've processed this event before
-        processed_event = session.query(ProcessedEvent).filter(ProcessedEvent.id == event_data["id"]).first()
-        
-        if not processed_event:
-            # This is a new event we haven't seen before
-            logger.debug(f"New event {event_data['id']} being processed for the first time")
-            
-            # Create new processed event record
-            new_processed_event = ProcessedEvent(
-                id=event_data["id"],
-                title=event_data["title"],
-                location=event_data.get("location", ""),
-                date=date_str,
-                hash_value=hash_value,
-                last_processed=datetime.now()
-            )
-            session.add(new_processed_event)
-            session.commit()
-            
-            # New events always need processing
-            return True
-        else:
-            # We've seen this event before, check if it changed
-            if processed_event.hash_value == hash_value:
-                # Hash hasn't changed, event details relevant to transit are unchanged
-                logger.debug(f"Event {event_data['id']} unchanged since last processing")
-                return False
-            else:
-                # Event has changed, update the processed event record
-                logger.debug(f"Event {event_data['id']} changed since last processing")
-                processed_event.title = event_data["title"]
-                processed_event.location = event_data.get("location", "")
-                processed_event.date = date_str
-                processed_event.hash_value = hash_value
-                processed_event.last_processed = datetime.now()
+
+    with get_session() as session:
+        try:
+            # Create hash value for change detection
+            # We only care about title, location and start_time for transit purposes
+            hash_input = f"{event_data['title']}|{event_data.get('location', '')}|{start_time.isoformat()}"
+            hash_value = hashlib.md5(cast(Buffer, hash_input.encode())).hexdigest()
+
+            # Check if we've processed this event before
+            processed_event = session.query(ProcessedEvent).filter(ProcessedEvent.id == event_data["id"]).first()
+
+            if not processed_event:
+                # This is a new event we haven't seen before
+                logger.debug(f"New event {event_data['id']} being processed for the first time")
+
+                # Create new processed event record
+                new_processed_event = ProcessedEvent(
+                    id=event_data["id"],
+                    title=event_data["title"],
+                    location=event_data.get("location", ""),
+                    date=date_str,
+                    hash_value=hash_value,
+                    last_processed=datetime.now()
+                )
+                session.add(new_processed_event)
                 session.commit()
+
+                # New events always need processing
                 return True
-    except Exception as e:
-        session.rollback()
-        logger.error(f"Error checking event changes: {str(e)}")
-        # If there's an error, return True to ensure processing happens
-        return True
-    finally:
-        session.close()
+            else:
+                # We've seen this event before, check if it changed
+                if processed_event.hash_value == hash_value:
+                    # Hash hasn't changed, event details relevant to transit are unchanged
+                    logger.debug(f"Event {event_data['id']} unchanged since last processing")
+                    return False
+                else:
+                    # Event has changed, update the processed event record
+                    logger.debug(f"Event {event_data['id']} changed since last processing")
+                    processed_event.title = event_data["title"]
+                    processed_event.location = event_data.get("location", "")
+                    processed_event.date = date_str
+                    processed_event.hash_value = hash_value
+                    processed_event.last_processed = datetime.now()
+                    session.commit()
+                    return True
+        except Exception as e:
+            session.rollback()
+            logger.error(f"Error checking event changes: {str(e)}")
+            # If there's an error, return True to ensure processing happens
+            return True
 
 def get_events_for_date(date):
     """Get all events for a specific date
