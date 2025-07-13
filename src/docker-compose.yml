@@ -3,7 +3,7 @@ version: '3'
 services:
   transit-calendar:
     build:
-      context: src
+      context: .
       dockerfile: Dockerfile
     container_name: transit-calendar
     restart: unless-stopped
