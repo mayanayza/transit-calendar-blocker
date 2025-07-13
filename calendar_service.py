@@ -9,9 +9,9 @@ import vobject
 from dateutil.parser import parse
 from icalendar import Calendar, Event
 from loguru import logger
-from .transit_service import get_apple_maps_url
+from transit_service import get_apple_maps_url
 
-from .utils import safe_date_search
+from utils import safe_date_search
 
 
 class CalendarService:

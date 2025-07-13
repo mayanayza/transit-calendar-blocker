@@ -8,9 +8,9 @@ import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-from .calendar_service import calendar_service
-from .database import cleanup_old_data, initialize_db
-from .scheduler import check_for_calendar_updates, process_daily_update
+from calendar_service import calendar_service
+from database import cleanup_old_data, initialize_db
+from scheduler import check_for_calendar_updates, process_daily_update
 
 # Global scheduler
 scheduler: Optional[BackgroundScheduler] = None
