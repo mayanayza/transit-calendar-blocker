@@ -20,4 +20,4 @@ ENV LOG_FILE=/app/data/transit-calendar.log
 ENV PYTHONUNBUFFERED=1
 
 # Command to run with intentional delay to ensure filesystem is ready
-CMD ["sh", "-c", "sleep 2 && python -m script.main"]
+CMD ["sh", "-c", "sleep 2 && python main.py"]
