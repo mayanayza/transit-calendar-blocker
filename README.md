@@ -184,3 +184,7 @@ Logs are written to both console and file (`data/transit-calendar.log`).
 ### Debug
 
 Set `LOG_LEVEL=DEBUG` in your environment to get detailed logging information.
+
+## License
+
+This project is licensed under the terms of the MIT license.
