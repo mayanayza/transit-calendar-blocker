@@ -46,7 +46,7 @@ def setup_logging_directories():
     logger.info(f"Log file: {config.LOG_FILE}")
     logger.info(f"Environment variables: DB_PATH={os.environ.get('DB_PATH')}, LOG_FILE={os.environ.get('LOG_FILE')}")
 
-@with_timeout(300)
+@with_timeout(600)
 def setup_scheduler():
     """Set up the scheduler with all required jobs"""
     global scheduler
