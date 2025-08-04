@@ -7,6 +7,9 @@ from typing import Optional
 import config
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 from calendar_service import calendar_service
 from database import cleanup_old_data, initialize_db
@@ -14,6 +17,41 @@ from scheduler import check_for_calendar_updates, process_daily_update
 
 from functools import wraps
 import signal
+
+# Add email alert handler for errors
+def email_handler(message):
+    """Handler for sending email alerts on ERROR/CRITICAL logs"""
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = config.ALERT_EMAIL_FROM
+        msg['To'] = config.ALERT_EMAIL_TO
+        msg['Subject'] = "Transit Calendar Alert"
+        
+        body = f"""
+        Transit Calendar Error Alert
+        
+        {message}
+        """
+        
+        msg.attach(MIMEText(body, 'plain'))
+        
+        server = smtplib.SMTP(config.SMTP_SERVER, config.SMTP_PORT)
+        if config.SMTP_USE_TLS:
+            server.starttls()
+        if config.SMTP_USERNAME:
+            server.login(config.SMTP_USERNAME, config.SMTP_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+    except Exception as e:
+        # Use print instead of logger to avoid recursion
+        print(f"Failed to send alert email: {e}")
+
+# Add with custom format that includes level info
+logger.add(
+    email_handler, 
+    level="ERROR",
+    format="{time} | {level} | {name} | {message}"
+)
 
 def timeout_handler(signum, frame):
     raise TimeoutError("Job execution timeout")

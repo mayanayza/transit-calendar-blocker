@@ -4,7 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Load environment variables
-env_path = Path('') / '.env'
+env_path = Path('../') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 # Calendar settings
@@ -16,12 +16,14 @@ DESTINATION_CALENDAR_URL = os.getenv('DESTINATION_CALENDAR_URL')
 DESTINATION_CALENDAR_USERNAME = os.getenv('DESTINATION_CALENDAR_USERNAME')
 DESTINATION_CALENDAR_PASSWORD = os.getenv('DESTINATION_CALENDAR_PASSWORD')
 
-# OpenObserve settings
-OBSERVE_URL = os.getenv('OBSERVE_URL')
-OBSERVE_ORG = os.getenv('OBSERVE_ORG')
-OBSERVE_STREAM = os.getenv('OBSERVE_STREAM')
-OBSERVE_USERNAME = os.getenv('OBSERVE_USERNAME')
-OBSERVE_PASSWORD = os.getenv('OBSERVE_PASSWORD')
+# Email alert settings
+SMTP_SERVER = os.getenv('SMTP_SERVER', 'localhost')
+SMTP_PORT = int(os.getenv('SMTP_PORT', '587'))
+SMTP_USERNAME = os.getenv('SMTP_USERNAME')
+SMTP_PASSWORD = os.getenv('SMTP_PASSWORD')
+ALERT_EMAIL_FROM = os.getenv('ALERT_EMAIL_FROM')
+ALERT_EMAIL_TO = os.getenv('ALERT_EMAIL_TO')
+SMTP_USE_TLS = os.getenv('SMTP_USE_TLS', 'true').lower() == 'true'
 
 # HERE API settings
 HERE_API_KEY = os.getenv('HERE_API_KEY')

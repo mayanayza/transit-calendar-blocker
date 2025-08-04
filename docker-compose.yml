@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   transit-calendar:
     build:
@@ -11,31 +9,43 @@ services:
     volumes:
       - transit_data:/app/data
     environment:
-      # Database and log settings
-      - DB_PATH=/app/data/transit-calendar.sqlite
-      - LOG_FILE=/app/data/transit-calendar.log
-      - LOG_LEVEL=${LOG_LEVEL:-INFO}
-      
       # Calendar settings
       - SOURCE_CALENDAR_URL=${SOURCE_CALENDAR_URL}
       - SOURCE_CALENDAR_USERNAME=${SOURCE_CALENDAR_USERNAME}
       - SOURCE_CALENDAR_PASSWORD=${SOURCE_CALENDAR_PASSWORD}
+
       - DESTINATION_CALENDAR_URL=${DESTINATION_CALENDAR_URL}
       - DESTINATION_CALENDAR_USERNAME=${DESTINATION_CALENDAR_USERNAME}
       - DESTINATION_CALENDAR_PASSWORD=${DESTINATION_CALENDAR_PASSWORD}
 
+      # Email alert settings
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - ALERT_EMAIL_FROM=${ALERT_EMAIL_FROM}
+      - ALERT_EMAIL_TO=${ALERT_EMAIL_TO}
+      - SMTP_USE_TLS=${SMTP_USE_TLS}
+
       # HERE API settings
       - HERE_API_KEY=${HERE_API_KEY}
-      
+
       # Home location and transit defaults
       - HOME_ADDRESS=${HOME_ADDRESS}
-      - DEFAULT_TRANSIT_MODE=${DEFAULT_TRANSIT_MODE:-transit}
-      
+      - DEFAULT_TRANSIT_MODE=${DEFAULT_TRANSIT_MODE}
+
       # Time settings
-      - LOOK_FORWARD_DAYS=${LOOK_FORWARD_DAYS:-28}
-      - CALENDAR_CHECK_INTERVAL=${CALENDAR_CHECK_INTERVAL:-15}
-      - DAILY_UPDATE_TIME=${DAILY_UPDATE_TIME:-01:00}
-      - MAX_TRANSIT_TIME_HOURS=${MAX_TRANSIT_TIME_HOURS:-3}
+      - LOOK_FORWARD_DAYS=${LOOK_FORWARD_DAYS}
+      - CALENDAR_CHECK_INTERVAL=${CALENDAR_CHECK_INTERVAL}
+      - DAILY_UPDATE_TIME=${DAILY_UPDATE_TIME}
+      - MAX_TRANSIT_TIME_HOURS=${MAX_TRANSIT_TIME_HOURS}
+
+      # Database
+      - DB_PATH=${DB_PATH}
+
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LOG_FILE=${LOG_FILE}
 
 volumes:
   transit_data:
