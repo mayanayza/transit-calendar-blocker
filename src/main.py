@@ -12,6 +12,26 @@ from calendar_service import calendar_service
 from database import cleanup_old_data, initialize_db
 from scheduler import check_for_calendar_updates, process_daily_update
 
+from functools import wraps
+import signal
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Job execution timeout")
+
+def with_timeout(seconds):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            signal.signal(signal.SIGALRM, timeout_handler)
+            signal.alarm(seconds)
+            try:
+                result = func(*args, **kwargs)
+            finally:
+                signal.alarm(0)
+            return result
+        return wrapper
+    return decorator
+
 # Global scheduler
 scheduler: Optional[BackgroundScheduler] = None
 
@@ -26,6 +46,7 @@ def setup_logging_directories():
     logger.info(f"Log file: {config.LOG_FILE}")
     logger.info(f"Environment variables: DB_PATH={os.environ.get('DB_PATH')}, LOG_FILE={os.environ.get('LOG_FILE')}")
 
+@with_timeout(300)
 def setup_scheduler():
     """Set up the scheduler with all required jobs"""
     global scheduler
@@ -37,7 +58,10 @@ def setup_scheduler():
         'interval',
         minutes=config.CALENDAR_CHECK_INTERVAL,
         id='calendar_check',
-        replace_existing=True
+        replace_existing=True,
+        max_instances=1,  # Explicitly limit to 1 instance
+        coalesce=True,    # Combine missed runs into one
+        misfire_grace_time=300  # Allow 5 minutes grace period
     )
     
     # Daily update job - runs at configured time
