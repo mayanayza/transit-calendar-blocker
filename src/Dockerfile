@@ -5,7 +5,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY /src/ .
+COPY . .
 
 # Create volume directory with full permissions
 RUN mkdir -p /app/data && chmod 777 /app/data
